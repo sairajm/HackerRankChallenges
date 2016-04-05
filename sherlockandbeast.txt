@@ -1,0 +1,81 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Scanner in=new Scanner(System.in);
+        int T=in.nextInt();
+        for(int a=0;a<T;T++)
+            {
+            int N=in.nextInt();
+            if(N%3==0)
+                {
+                String s="";
+                for(int k=0;k<N;k++)
+                    {
+                    s+=""+5;
+                }
+                System.out.println(s);
+            }
+            else
+                {
+                if(N>7)
+                    {
+                    int times=N/5;
+                    for(int i=1;i<times+1;i++)
+                        {
+                            int mul=5*i;
+                        int temp=N-mul;
+                            if(temp%3==0)
+                            {
+                               String answer="";
+                                for(int m=0;m<temp;m++)
+                                    {
+                                    answer+=""+5;
+                                }
+                                for(int m=0;m<mul;m++)
+                                    {
+                                    answer+=""+3;
+                                }
+                                System.out.println(answer);
+                                }
+                                else
+                                {
+                                if(N%5==0)
+                                    {
+                                       String g="";
+                                        for(int j=0;j<N;j++)
+                                        {
+                                            g+=""+3;
+                                         }
+                                        System.out.println(g);        
+                                }
+                               
+                            }
+                            }
+                            
+                        }
+                else if(N%5==0)
+                    {
+                    if(N%5==0)
+                        {
+                        String g="";
+                        for(int i=0;i<N;i++)
+                            {
+                            g+=""+3;
+                        }
+                        System.out.println(g);
+                    }
+                }
+                else
+                    {
+                    System.out.println("-1");
+                }
+                    }
+                }
+            
+        
+    }
+}

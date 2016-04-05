@@ -1,0 +1,51 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+#include <map>
+multimap<int,int> elements;
+int main() {
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */ 
+    
+    int n;
+    cin >> n;
+        for(int i=1;i<n+1;i++)
+            {
+            int t;
+            cin >> t;
+            int d;
+            cin >> d;
+            int sum;
+            sum=t+d;
+            //cout << "t : " << t << " d: " << d << " Sum: " <<sum;
+            if(elements.find(sum)==elements.end())
+                {
+                //cout << "reached here " <<endl;
+                elements.insert(std::make_pair(sum,i));    
+            }
+            else
+                {
+                int existing=elements.find(sum)->second;
+                if(existing>i)
+                    {
+                    elements.erase(sum);
+                    elements.insert(std::make_pair(sum,i));
+                    elements.insert(std::make_pair(sum,existing));
+                }
+		else if(existing<i)
+		{
+		    elements.insert(std::make_pair(sum,i));
+		}	
+            }
+            
+        }
+        for(multimap<int, int> :: const_iterator itr=elements.begin();itr!=elements.end();itr++)
+            {
+            
+            cout << itr->second << " ";
+        }
+        
+    return 0;
+}
