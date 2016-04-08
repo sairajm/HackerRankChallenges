@@ -1,0 +1,88 @@
+function processData(input) {
+    //Enter your code here
+    given_input=input.split("\n");
+    total_iterations=given_input[0];
+    given_input.shift();
+    for(i=0;i<total_iterations;i++)
+        {
+             my_stack=[];
+            var my_stack1=[];
+            var xpression=given_input[i];
+            var xpression_length=xpression.length;
+            var answer;
+            
+            for(j=0;j<xpression.length;j++)
+                {
+                    if((xpression[j]=="[")||(xpression[j]=="{")||(xpression[j]=="("))
+                    {
+                        my_stack.push(xpression[j]);
+                        
+                    }
+                    else if((xpression[j]=="]")||(xpression[j]=="}")||(xpression[j]==")"))
+                        {
+                            answer=checkBalanced(xpression[j]);
+                            if(answer=="NO")
+                                {
+                                    break;
+                                }
+                        }
+                }
+           console.log(answer);     
+        }
+        
+} 
+
+function checkBalanced(character)
+{
+    if(character=="]")
+    {
+            var index=my_stack.indexOf("[");
+        if(index > -1)
+            {
+                my_stack.splice(index,1);
+                return "YES";
+            }
+        else
+        {
+            return "NO";
+        }        
+     }
+    else if(character=="}")
+        {
+            var index=my_stack.indexOf("{");
+        if(index > -1)
+            {
+                my_stack.splice(index,1);
+                return "YES";
+            }
+        else
+        {
+            return "NO";
+        }        
+     }
+    else if( character==")")
+    {
+        var index=my_stack.indexOf("(");
+        if(index > -1)
+            {
+                my_stack.splice(index,1);
+                return "YES";
+            }
+        else
+        {
+            return "NO";
+        }         
+    }
+    
+}
+
+process.stdin.resume();
+process.stdin.setEncoding("ascii");
+_input = "";
+process.stdin.on("data", function (input) {
+    _input += input;
+});
+
+process.stdin.on("end", function () {
+   processData(_input);
+});
