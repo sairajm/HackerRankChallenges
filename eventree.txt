@@ -1,0 +1,68 @@
+function processData(input) {
+    //Enter your code here
+    var input_given=[];
+    input_given=input.split("\n");
+    var splitted=input_given[0].split(" ");
+    input_given.shift();
+    var key_values={};
+    for(i=0;i<splitted[0]-1;i++)
+        {
+            var splitter=input_given[i].split(" ");
+            var str=splitter[0];
+            key_values[str]=splitter[1];
+        }
+   // console.log(key_values);
+    var answer=my_even_processor(key_values);
+    console.log(answer);
+    
+    
+} 
+function my_even_processor(key_values)
+{
+     // since there will always be a root
+    var root;
+    var elements_removed=0;
+    for(var key in key_values)
+        {
+            root=key_values[key];
+            break;
+        }
+    for( var key in key_values)
+        {
+            var vertex_count=1;
+            var element=key_values[key];
+            if(element==root)
+                {
+                   // console.log("The root " +element);
+                    
+                    vertex_count++; // vertex_count=2
+                    for(var key1 in key_values)
+                        {
+                           if(key_values[key1]==key)
+                               {
+                                   //console.log("The element which is connected to root "+key1+" key: "+ key);
+                                   vertex_count++; //vertext_count=4 since this executes twice.
+                               }
+                        }
+                    console.log(vertex_count);
+                    if(vertex_count%2!=0)
+                    {
+                    
+                        elements_removed++;
+                    }
+                }
+            
+            
+        }
+    return elements_removed;
+}
+process.stdin.resume();
+process.stdin.setEncoding("ascii");
+_input = "";
+process.stdin.on("data", function (input) {
+    _input += input;
+});
+
+process.stdin.on("end", function () {
+   processData(_input);
+});
